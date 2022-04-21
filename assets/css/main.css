@@ -1,10 +1,10 @@
 /* Markdown */
 :root{
---maincolor: red;
---bordercl:rebeccapurple;
+--maincolor: #b7d726;
 --callouctcolor:dodgerblue;
 --hovercolor:navy;
---darkMaincolor: #50fa7b;
+--darkMaincolor: #dbfa50;
+--dtextcl: #000000;
 }
 html {
   color: #232333;
@@ -32,12 +32,12 @@ p {
 
 hr {
   border: 0;
-  border-top: 3px dotted var(--bordercl);
+  border-top: 3px dotted var(--maincolor);
   margin: 1em 0;
 }
 
 blockquote {
-  border-left: 3px solid var(--bordercl);
+  border-left: 3px solid var(--maincolor);
   color: #737373;
   margin: 0;
   padding-left: 1em;
@@ -164,7 +164,7 @@ h6::before { color: var(--maincolor); content: '###### '; }
 footer {
   display: flex;
   align-items: center;
-  border-top: 0.4rem dotted var(--bordercl);
+  border-top: 0.4rem dotted var(--maincolor);
   padding: 2rem 0rem;
   margin-top: 2rem;
 }
@@ -237,12 +237,20 @@ svg{
   color: white;
 }
 .draft-label{ 
-    color: var(--bordercl);
+    color: var(--dtextcl);
     text-decoration: none;
     padding: 2px 4px;
     border-radius: 4px;
     margin-left: 6px;
     background-color: #f9f2f4;
+}
+.tag-label{ 
+  color: var(--dtextcl);
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 6px;
+  background-color: #f2f9f2;
 }
 .highlight {
   position: relative;

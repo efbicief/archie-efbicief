@@ -1,0 +1,14 @@
+<div class="site-description">
+	{{- if isset .Site.Params "subtitle" -}}
+	<p>{{ .Site.Params.Subtitle | markdownify }}</p>
+	{{- end -}}
+</div>
+<h1>About me</h1>
+<div class="site-title">
+	{{- if isset .Site.Params "bio" -}}
+	<p>{{ .Site.Params.bio | markdownify }}</p>
+	{{- end -}}
+</div>
+<a class="readmore" href="https://fbcf.xyz/resources/doc/cv.pdf">Read my CV ⟶</a>
+<a class="readmore" href="https://github.com/efbicief">Visit my GitHub ⟶</a>
+<a class="readmore" href="https://www.linkedin.com/in/felix-bowyer-382192218/">Add me on LinkedIn ⟶</a>

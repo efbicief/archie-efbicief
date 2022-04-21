@@ -10,7 +10,7 @@ body {
 }
 
 ::selection {
-  background: red;
+  background: #899e2b;
   color: #fff;
   text-shadow: none;
 }
@@ -109,7 +109,11 @@ a:hover {
 }
 .draft-label {
   color: var(--darkMaincolor);
-  background-color: blue;
+  background-color: #414141;
+}
+.tag-label {
+  color: var(--darkMaincolor);
+  background-color: #414141;
 }
 .highlight pre code[class=language-javaScript]::before,
 .highlight pre code[class="language-js"]::before {

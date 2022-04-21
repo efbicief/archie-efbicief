@@ -3,8 +3,13 @@
 	<article>
 		<div class="title">
 			<h1 class="title">{{ .Title }}</h1>
-			<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+			<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}
+				{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+				<!-- {{ range .Params.tags }} <span class="tag-label">{{ . }}</span> {{ end }} -->
+				<!-- {{ range .Params.tags }} <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{ end }} -->
+			</div>
 		</div>
+
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
 			<strong>tl;dr:</strong>
@@ -20,14 +25,21 @@
 			{{ if gt .Params.tags 0 }}
 			<nav class="nav tags">
 				<ul class="tags">
-					{{ range .Params.tags }}
-					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-					{{ end }}
+					<li>
+						{{ range .Params.tags }}
+						<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+						{{ end }}
+					</li>
 				</ul>
 			</nav>
 			{{ end }}
 			{{ end }}
 		</div>
+
+		{{ if isset .Params "link" }}
+		<a class="readmore" href="{{ .Params.link }}">Visit project ⟶</a>
+		{{ end }}
+
 	</article>
 </main>
 {{ end }}

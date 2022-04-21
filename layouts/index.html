@@ -6,17 +6,22 @@
 			{{ partial "head.html" . }}
 			
 			<main class="list">
-				<div class="site-description">
-					{{- if isset .Site.Params "subtitle" -}}
-					<p>{{ .Site.Params.Subtitle | markdownify }}</p>
-					{{- end -}}
-				</div>
+				{{ partial "topcontent.html" . }}
+
+				<h1>Featured Projects</h1>
+
 				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
 				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
 				{{ range $paginator.Pages }}
-				<section class="list-item">
-					<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
-					<time>{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time>
+				{{ if in .Params.tags "Featured" }} {{ if in .Params.tags "Project" }}
+
+					<!-- <h2 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2> -->
+					<h2 class="title">{{.Title}}</h2>
+					<time>{{ dateFormat "Jan 2, 2006" .Date }}
+						{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+						{{ range .Params.tags }} <span class="tag-label">{{ . }}</span> {{ end }}
+						<!-- {{ range .Params.tags }} <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{ end }} -->
+					</time>
 					<br><div class="description">
 						{{ if isset .Params "description" }}
 						{{ .Description }}
@@ -25,7 +30,13 @@
 						{{ end }}
 					</div>
 					<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
-				</section>
+
+					{{ if isset .Params "link" }}
+					<br>
+					<a class="readmore" href="{{ .Params.link }}">Visit project ⟶</a>
+					{{ end }}
+				
+				{{ end }} {{ end }}
 				{{ end }}
 				{{ template "partials/paginator.html" . }}
 			</main>
