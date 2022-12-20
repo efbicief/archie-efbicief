@@ -29,7 +29,10 @@
 						{{ .Summary }}&hellip;
 						{{ end }}
 					</div>
-					<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
+
+					{{ if not (in .Params.categories "Incomplete") }}
+						<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
+					{{ end }}
 
 					{{ if isset .Params "link" }}
 					<br>
