@@ -8,12 +8,12 @@
 			<main class="list">
 				{{ partial "topcontent.html" . }}
 
-				<h1>Featured Projects</h1>
+				<h1>Entries tagged - "Blog"</h1>
 
 				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
 				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
 				{{ range $paginator.Pages }}
-				{{ if in .Params.tags "Featured" }} {{ if in .Params.tags "Project" }}
+				{{ if in .Params.tags "Blog" }}
 
 					<!-- <h2 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2> -->
 					<h2 class="title">{{.Title}}</h2>
@@ -39,7 +39,7 @@
 					<a class="readmore" href="{{ .Params.link }}">Visit project ⟶</a>
 					{{ end }}
 				
-				{{ end }} {{ end }}
+				{{ end }}
 				{{ end }}
 				{{ template "partials/paginator.html" . }}
 			</main>
